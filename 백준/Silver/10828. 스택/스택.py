@@ -12,8 +12,7 @@ for _ in range(n):
     
     elif cmd[0] == "pop":
         if len(stack) > 0: 
-            print(stack[-1])
-            del(stack[-1])
+            print(stack.pop())
         else: 
             print(-1)
 
