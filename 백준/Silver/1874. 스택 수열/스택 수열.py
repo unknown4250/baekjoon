@@ -4,12 +4,9 @@ input = sys.stdin.readline
 
 n = int(input())
 
-stack = []
+stack, res = [], []
 cnt = 0
 top = False
-
-res = []
-
 
 for _ in range(n):
     num = int(input())
