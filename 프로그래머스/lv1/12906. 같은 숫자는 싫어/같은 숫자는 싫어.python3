@@ -1,0 +1,15 @@
+def solution(arr):
+    
+    answer = []
+
+    n = len(arr)
+    i = 0
+
+    while i < n:
+        answer.append(arr[i])
+        next = i + 1
+        while next < n and arr[i] == arr[next]:
+            next += 1
+            i += 1
+        i += 1
+    return answer
