@@ -1,0 +1,19 @@
+def solution(left, right):
+
+    answer = 0
+
+    for i in range(left, right + 1):
+        temp = i / 2
+        num = 1
+        # 약수 찾기
+        while temp >= 1:
+            if i % temp == 0:
+                num += 1
+            temp -= 1
+
+        # 약수 개수의 짝수 판별
+        if num % 2 == 0:
+            answer += i
+        else:
+            answer -= i
+    return answer
