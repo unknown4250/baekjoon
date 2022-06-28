@@ -1,0 +1,14 @@
+
+def solution(n, m):
+
+    min_num, max_num = min(n, m), max(n, m)
+
+    while min_num > 0:
+        min_num, max_num = max_num % min_num, min_num 
+    
+    gcd = max_num
+    lcm = (n * m) // gcd
+    
+    answer = [gcd, lcm]
+
+    return answer
