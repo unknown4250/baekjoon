@@ -1,0 +1,4 @@
+def solution(x):    
+    digits_sum = sum(map(int, str(x)))
+
+    return True if x % digits_sum == 0 else False
