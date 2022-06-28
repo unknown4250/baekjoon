@@ -1,0 +1,16 @@
+def solution(s):
+
+    answer = ''
+    
+    i = 0
+    for ch in s:
+        if ch == ' ':
+            i = 0
+            answer += ch
+            continue
+        if i % 2 == 0:
+            answer += ch.upper()
+        else:
+            answer += ch.lower()
+        i += 1
+    return answer
