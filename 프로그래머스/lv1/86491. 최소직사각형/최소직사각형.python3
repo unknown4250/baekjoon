@@ -1,0 +1,2 @@
+def solution(sizes):
+    return max(max(case) for case in sizes) * max(min(case) for case in sizes)
