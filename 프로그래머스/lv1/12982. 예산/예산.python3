@@ -1,6 +1,6 @@
 def solution(d, budget):
     answer = total = 0
-    d = sorted(d)
+    d.sort()
     
     for num in d:
         if total + num <= budget:
