@@ -1,0 +1,10 @@
+import datetime
+def solution(a, b):
+    """
+    days = ["THU","FRI","SAT","SUN","MON","TUE","WED"]
+    mon = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    return days[(sum(mon[:a+1]) + b) % 7]
+    """
+
+    days = ["MON","TUE","WED","THU","FRI","SAT","SUN"]
+    return days[datetime.datetime(2016,a,b).weekday()]
