@@ -1,0 +1,11 @@
+def solution(n):
+    answer = 0
+    result_str = ''
+
+    while n > 0:
+        rest = n % 3
+        n //= 3
+        result_str += str(rest)
+    
+    answer = int(result_str, 3)
+    return answer
