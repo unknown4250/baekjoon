@@ -1,0 +1,15 @@
+from itertools import combinations
+
+def solution(number, k):
+    # return "".join(max(combinations(number, len(number)-k))) # time exceeded
+
+    answer = []
+
+    for num in number:
+        # 스택에 가장 최근에 넣은 값이 넣으려는 값보다 작으면 계속해서 빼내야함
+        while k > 0 and answer and answer[-1] < num:
+            answer.pop()
+            k -= 1
+        answer.append(num)
+
+    return ''.join(answer[:len(answer)-k])
