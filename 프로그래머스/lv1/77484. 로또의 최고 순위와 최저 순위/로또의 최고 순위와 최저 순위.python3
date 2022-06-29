@@ -1,0 +1,18 @@
+def solution(lottos, win_nums):
+    
+    answer = []
+
+    zeros = 0
+    matched = 0
+
+    for lotto_num in lottos:
+        if lotto_num == 0:
+            zeros += 1
+            
+        if lotto_num in win_nums:
+            matched += 1
+
+    answer = [min(6-(zeros+matched)+1, 6), min(6 - matched + 1, 6)]
+
+
+    return answer
