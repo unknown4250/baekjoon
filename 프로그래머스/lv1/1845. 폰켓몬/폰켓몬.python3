@@ -1,0 +1,5 @@
+def solution(nums):
+    n = len(nums) // 2
+    types_num = len(set(nums))
+    
+    return types_num if n > types_num else n
