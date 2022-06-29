@@ -1,0 +1,30 @@
+from collections import deque
+
+def solution(priorities, location):
+    answer = 0
+
+    # queue 보다 훨씬 빠른 deque 사용
+    new_priorities = deque()
+
+    # 문서 순서와 우선 순위를 같이 저장하는 리스트
+    for idx, val in enumerate(priorities):
+        new_priorities.append((val, idx))
+
+    while True:
+        # 맨 처음 대기 작업의 우선 순위가 가장 높은 경우
+        if new_priorities[0][0] == max(new_priorities)[0]:
+            # 출력 횟수 증가
+            answer += 1
+
+            # 내가 인쇄를 요청한 문서라면 탐색 종료
+            if new_priorities[0][1] == location:
+                break
+
+            # 대기 목록에서 제외
+            new_priorities.popleft()
+        
+        # 가장 높은 우선순위가 아니면 대기 목록 가장 맨 뒤로
+        else:
+            new_priorities.append(new_priorities.popleft())
+
+    return answer
