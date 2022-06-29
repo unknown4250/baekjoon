@@ -1,0 +1,8 @@
+-- 각 컬럼 그룹의 count를 세려면 HAVING COUNT(컬럼)
+SELECT ID, NAME, HOST_ID 
+FROM PLACES 
+WHERE HOST_ID IN (SELECT HOST_ID 
+                  FROM PLACES 
+                  GROUP BY HOST_ID 
+                  HAVING COUNT(HOST_ID) >= 2) 
+ORDER BY ID;
