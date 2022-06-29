@@ -1,0 +1,12 @@
+def gcd(a, b):
+    if not a % b:
+        return b
+    else:
+        return gcd(b, a % b)
+
+def solution(arr):
+    for i in range(1, len(arr)):
+        # A, B의 최대공약수 : (A * B) / 최소공배수
+        arr[i] = (arr[i-1] * arr[i]) // gcd(arr[i-1], arr[i])
+
+    return arr[-1]
