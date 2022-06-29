@@ -1,0 +1,41 @@
+def solution(new_id):
+    answer = ''
+    special_char = ['-', '_', '.']
+    
+    # step 1. upper character -> lower character
+    new_id = new_id.lower()
+
+    # step 2. if character is lower case or number or "-", "_", "." then add the character to answer
+    for id in new_id:
+        if id.islower() or id.isdigit() or id in special_char:
+            answer += id
+    
+    # step 3. if ".." in string, then replace that to "."
+    while ".." in answer:
+        answer = answer.replace("..", ".")
+
+    # step 4. if first character or last character is ".", remove it
+    if answer[0] == ".":
+        if len(answer) >= 2:
+            answer = answer[1:]
+        else:
+            answer = "."
+    if answer[-1] == ".":
+        answer = answer[:-1]
+    
+    # step 5 : new_id is empty string, new_id = 'a'
+    if len(answer) == 0:
+        answer = "a"     
+    
+    # step 6 : if a length of the string is more than 16, the string only has first 15 characters 
+    if len(answer) >= 16:
+        answer = answer[:15]
+    # if last character is ".", then remove it
+    if answer[-1] == ".":
+        answer = answer[:-1]
+
+    # step 7 : if a length of the string is less than 2, concat a last character until the length is 3
+    
+    while len(answer) < 3:
+        answer += answer[-1]
+    return answer
