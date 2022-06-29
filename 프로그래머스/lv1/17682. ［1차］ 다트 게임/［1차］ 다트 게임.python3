@@ -1,0 +1,23 @@
+def solution(dartResult):
+    scores = []
+    num = ''
+    for ch in dartResult:
+        if ch.isnumeric():
+            num += ch
+        elif ch == 'S':
+            scores.append(int(num))
+            num = ''
+        elif ch == 'D':
+            scores.append(int(num)**2)
+            num = ''
+        elif ch == 'T':
+            scores.append(int(num)**3)
+            num = ''
+        elif ch == '*':
+            scores[-1] *= 2
+            if len(scores) > 1:
+                scores[-2] *= 2
+        elif ch == '#':
+            scores[-1] *= -1
+
+    return sum(scores)
