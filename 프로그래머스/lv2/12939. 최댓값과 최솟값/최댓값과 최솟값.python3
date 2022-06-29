@@ -1,0 +1,6 @@
+def solution(s):
+    nums = list(map(int, s.split(" ")))
+
+    answer = "%d %d" % (min(nums), max(nums))
+    
+    return answer
