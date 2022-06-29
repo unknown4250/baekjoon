@@ -1,0 +1,26 @@
+def solution(n, arr1, arr2):
+    answer = []
+
+    for i in range(n):
+        # 한 줄 해독한 결과를 임시 저장할 문자열
+        temp_map = ''
+
+        # arr1과 arr2의 or 연산 값을 이진수로 변환
+        # 인덱스 2부터 저장하는 이유는 bin 함수에 의해 '0b'가 앞에 붙어서 이를 제거하기 위함
+        binary_map = bin(arr1[i] | arr2[i])[2:]
+        
+        # 해독 결과가 n보다 작으면 앞에 0을 채워줘야 함
+        # 왜인지 zfill이 안먹힘,, 
+        if len(binary_map) != n:
+            binary_map = '0' * (n - len(binary_map)) + binary_map
+        
+        # 이진수의 1과 0을 # 또는 공백으로 바꾸기 위한 반복문
+        for ch in binary_map:
+            if ch == '1':
+                temp_map += '#'
+            else:
+                temp_map += ' '
+        
+        answer.append(temp_map)
+    
+    return answer
