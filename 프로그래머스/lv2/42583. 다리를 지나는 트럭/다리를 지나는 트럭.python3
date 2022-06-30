@@ -1,0 +1,24 @@
+def solution(bridge_length, weight, truck_weights):
+    # 걸린 시간
+    answer = 0
+
+    # 빈 다리는 0으로 채워서 저장
+    bridge = [0] * bridge_length
+
+    while bridge:
+        # 시간 증가
+        answer += 1
+
+        bridge.pop(0)
+
+        # 아직 다리를 건너지 못한 트럭이 있다면
+        if truck_weights:
+            # 다음 트럭 무게를 현재 다리가 견딜 수 있는지 확인
+            if sum(bridge) + truck_weights[0] <= weight:
+                # 트럭을 다리 위에 올림
+                bridge.append(truck_weights.pop(0))
+            else:
+                # 트럭이 올라가지 않음
+                bridge.append(0)
+
+    return answer
