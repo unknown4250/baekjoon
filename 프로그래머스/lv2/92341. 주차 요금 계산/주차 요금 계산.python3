@@ -24,10 +24,7 @@ def solution(fees, records):
             parking_time = int(time.split(":")[0]) * 60 + int(time.split(":")[1]) - parking_record.pop(car_num)
             
             # 차량별 누적 주차 시간
-            if car_num in time_info:
-                time_info[car_num] += parking_time
-            else:
-                time_info[car_num] = parking_time
+            time_info[car_num] = time_info.get(car_num, 0) + parking_time
 
     # 입차는 했지만 출차 기록은 없는 차량
     if parking_record:
@@ -36,10 +33,7 @@ def solution(fees, records):
             parking_time = (23 * 60 + 59) - parking_record[record]
 
             # 누적 주차 시간 계산
-            if record in time_info:
-                time_info[record] += parking_time
-            else:
-                time_info[record] = parking_time
+            time_info[record] = time_info.get(record, 0) + parking_time
 
     # 차량 번호를 기준으로 오름차순 정렬
     time_info = sorted(time_info.items())
