@@ -9,7 +9,7 @@ def solution(s):
             first_char = True
             continue
 
-        # 단어의 첫 번째 단어
+        # 단어의 첫 번째 글자
         if first_char:
             # 알파벳인 경우 -> 대문자로 변경
             if ch.isalpha():
@@ -22,7 +22,7 @@ def solution(s):
             # 이후 글자는 공백이 나오기 전까지 첫 번째 글자 아님
             first_char = False
 
-        # 첫 번째 단어가 아니면 소문자로 변경
+        # 첫 번째 글자가 아니면 소문자로 변경
         else:
             answer += ch.lower()
 
