@@ -28,6 +28,9 @@ def dijkstra(start):
     queue = []
 
     # 시작점을 큐에 넣기
+    # heappush의 두 번째 인자로 튜플을 사용할 경우, 튜플 항목의 순서대로 우선순위를 가짐
+    # 즉 가중치를 기준으로 우선순위를 가져야 하므로 "heapq.heappush(queue, (가중치, 정점 번호))"가 맞음
+    # 만약 heapq.heappush(queue, (new_start, cost))일 경우, 시간 초과
     heapq.heappush(queue, (0, start))
 
     # 시작점의 가중치를 0으로 초기화
