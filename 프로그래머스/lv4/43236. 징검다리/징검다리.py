@@ -4,7 +4,7 @@ def solution(distance, rocks, n):
     left, right = 0, distance
 
     while left <= right:
-        # 거리의 최솟값을 범위의 중간 값으로 초기화
+        # mid: 거리의 최솟값 중 가장 큰 값
         mid = (left + right) // 2
         min_dist = float('inf')
 
