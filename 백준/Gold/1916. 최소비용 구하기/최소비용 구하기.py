@@ -7,12 +7,12 @@ def dijkstra(start):
     queue = []
 
     # 시작 비용을 0으로 설정
-    heapq.heappush(queue, (start, 0))
+    heapq.heappush(queue, (0, start))
 
     while queue:
     
         # 탐색할 노드와 버스 비용
-        cur_node, cur_cost = heapq.heappop(queue)
+        cur_cost, cur_node = heapq.heappop(queue)
 
         # 기존 비용보다 많으면 체크할 필요 없음
         if costs[cur_node] < cur_cost:
@@ -29,7 +29,7 @@ def dijkstra(start):
                 costs[new_start] = cost
 
                 # 다음 인접 노드의 비용 계산을 위해 큐에 삽입
-                heapq.heappush(queue, (new_start, cost))
+                heapq.heappush(queue, (cost, new_start))
 
 
 city_num = int(input()) # 도시 개수
