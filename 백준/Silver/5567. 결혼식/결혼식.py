@@ -25,24 +25,23 @@ queue.append((1, 0))
 # 시작점 방문 표시
 visited[1] = True
 
-# 친구 혹은 친구의 친구인지 판별하기 위한 depth
-#depth = 0
+# 초대할 친구의 수
 cnt = 0
 
 while queue:
+    # 친구 혹은 친구의 친구인지 판별하기 위한 depth
     cur, depth = queue.popleft()
 
+    # depth가 2 이하면 초대
     if depth < 3:
         cnt += 1
+
     # 연결된 친구 탐색
     for next in friends[cur]:
         # 방문하지 않았고 친구 혹은 친구의 친구라면
         if not visited[next]:
             queue.append((next, depth+1))
             visited[next] = True # 방문 표시
-
-    # 한번 탐색을 끝낼 때 한 명과 연결된 모든 친구 탐색 완료되므로 depth + 1
-    #depth += 1
 
 # 상근이 제외한 사람 수
 print(cnt - 1)
