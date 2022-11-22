@@ -1,0 +1,51 @@
+from math import ceil
+
+def solution(fees, records):
+    basic_time, basic_fee = fees[0], fees[1]
+    unit_time, unite_fee = fees[2], fees[3]
+    
+
+    answer = []
+    parking_record = {} # 입출차 기록
+    time_info = {} # 차량번호:누적 주차 시간
+
+    for record in records:
+        # records: [입출차시간, 차량번호, 내역]
+        time, car_num, desc = record.split()
+
+        # 차량의 입차 시간 저장
+        if desc == "IN":
+            # 입차 시각(시:분)을 분으로 변환하여 저장
+            parking_record[car_num] = int(time.split(":")[0]) * 60 + int(time.split(":")[1])
+        
+        # 차량 출차
+        else:
+            # 주차 시간(출차 시간 - 입차 시간)          
+            parking_time = int(time.split(":")[0]) * 60 + int(time.split(":")[1]) - parking_record.pop(car_num)
+            
+            # 차량별 누적 주차 시간
+            if car_num in time_info:
+                time_info[car_num] += parking_time
+            else:
+                time_info[car_num] = parking_time
+
+    # 입차는 했지만 출차 기록은 없는 차량
+    if parking_record:
+        for record in parking_record:
+            # 23:59에 출차됐다고 간주
+            parking_time = (23 * 60 + 59) - parking_record[record]
+
+            # 누적 주차 시간 계산
+            if record in time_info:
+                time_info[record] += parking_time
+            else:
+                time_info[record] = parking_time
+
+    # 차량 번호를 기준으로 오름차순 정렬
+    time_info = sorted(time_info.items())
+
+    for car, total_time in time_info:
+        # 기본 시간 내에 출차했다면 0으로 계산해야 함
+        answer.append(basic_fee + ceil(max(0, total_time - basic_time) / unit_time) * unite_fee)
+
+    return answer
